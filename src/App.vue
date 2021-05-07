@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- <Truong  /> -->
+    <Header
+      @toggle-form="isShowForm = !isShowForm"
+      :title="!isShowForm ? 'ADD Task' : 'CANCLE'"
+    />
+    <router-view :isShowForm="isShowForm" @is-edit-change-name-btn="isShowForm=!isShowForm"></router-view>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import Truong from "./components/test/truong";
+import Header from "./components/layout/header";
+import Footer from "./components/layout/footer";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Footer,
+    // Truong,
+  },
+  data() {
+    return {
+      isShowForm: false,
+    };
+  },
+};
 </script>
 
-<style>
+<style >
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
